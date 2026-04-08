@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  backend:
+    image: node:18
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npm install && node server.js"
+    ports:
+      - "3001:3001"
+
+  frontend:
+    image: node:18
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npx create-react-app frontend_temp && cd frontend_temp && npm install && npm start"
+    ports:
+      - "3000:3000"
